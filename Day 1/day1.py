@@ -3,6 +3,7 @@
 # ask users for their pet's name
 # return the name of the group suggestion as city + pet name
 # check for blank responses
+
 from colorama import Fore, Back, Style
 
 
