@@ -1,49 +1,49 @@
 # Day 2 challenge
-def get_positive_float(prompt):
+def get_bill_amount():
     while True:
         try:
-            value = float(input(prompt))
+            value = float(input("What was the total bill? $"))
             if value > 0:
                 return value
             else:
-                print("Value must be greater than 0. Please try again.")
+                print("Bill amount must be greater than 0. Please try again.")
         except ValueError:
             print("Invalid input. Please enter a number.")
 
 
-def get_tip_percentage():
+def get_tip():
     while True:
         try:
             tip = int(
-                input("How much tip would you like to give? 10, 12, or 15? "))
-            if tip in [10, 12, 15]:
+                input("How much tip would you like to give? $"))
+            if tip < bill:
                 return tip
             else:
-                print("Please enter 10, 12, or 15.")
+                print("Please give less tip")
         except ValueError:
             print("Invalid input. Please enter a number.")
 
 
-def get_positive_int(prompt):
+def get_number_of_people():
     while True:
         try:
-            value = int(input(prompt))
+            value = int(input("How many people to split the bill? "))
             if value > 0:
                 return value
             else:
-                print("Value must be greater than 0. Please try again.")
+                print("Number of people must be greater than 0. Please try again.")
         except ValueError:
             print("Invalid input. Please enter a whole number.")
 
 
-def calculate_each_person_pay(bill_amount, tip_percent, no_of_people):
-    total_bill = bill_amount + (bill_amount * tip_percent / 100)
+def calculate_each_person_pay(bill_amount, tip, no_of_people):
+    total_bill = bill_amount + tip
     return round(total_bill / no_of_people, 2)
 
 
-print("Welcome to the tip calculator!")
-bill = get_positive_float("What was the total bill? $")
-tip = get_tip_percentage()
-people = get_positive_int("How many people to split the bill? ")
+print("Welcome to the tip calculator! \n\n")
+bill = get_bill_amount()
+tip = get_tip()
+people = get_number_of_people()
 each_pay = calculate_each_person_pay(bill, tip, people)
 print(f"Each person should pay: ${each_pay}")
